@@ -1,101 +1,211 @@
-import Image from "next/image";
+'use client'; // Client component for animations
+
+import Link from 'next/link'; // Import Link for navigation
+import { FiImage, FiZap, FiLayers } from 'react-icons/fi'; // Import icons for features
+import { motion } from 'framer-motion'; // Import framer-motion for animations
 
 export default function Home() {
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="https://nextjs.org/icons/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-              app/page.js
-            </code>
-            .
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
+    <div className="bg-gradient-to-b from-blue-50 to-gray-100 min-h-screen flex flex-col items-center justify-center px-6 lg:px-12">
+      
+      {/* Hero Section */}
+      <section className="relative text-center mb-16 w-full max-w-7xl mx-auto">
+        <motion.div 
+          initial={{ opacity: 0, y: 50 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1 }}
+        >
+          <h1 className="text-6xl font-extrabold text-blue-600 mb-6 leading-tight">
+            Welcome to <span className="text-indigo-600">AI Pro Image Generator</span>
+          </h1>
+          <p className="text-lg text-gray-700 mb-8">
+            Effortlessly create stunning AI-generated images in just a few clicks.
+          </p>
+          <motion.div 
+            initial={{ scale: 0.8, opacity: 0 }}
+            animate={{ scale: 1, opacity: 1 }}
+            transition={{ duration: 1.2 }}
+          >
+            <Link 
+              href="/image-generator"
+              className="inline-block px-8 py-4 bg-gradient-to-r from-blue-600 to-indigo-600 text-white font-semibold rounded-lg shadow-lg hover:scale-105 hover:shadow-xl transform transition-all"
+            >
+              Start Generating Images
+            </Link>
+          </motion.div>
+        </motion.div>
+      </section>
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+      {/* Features Section */}
+      <section className="w-full max-w-7xl grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 text-center mb-16">
+        
+        {/* Feature 1 */}
+        <motion.div 
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+          className="bg-white p-8 rounded-lg shadow-md hover:shadow-lg transition"
+        >
+          <FiImage className="text-blue-600 text-5xl mb-4 mx-auto" />
+          <h3 className="text-2xl font-bold mb-4">Stunning AI Images</h3>
+          <p className="text-gray-600">
+            Generate high-quality images tailored to your prompt with state-of-the-art AI.
+          </p>
+        </motion.div>
+
+        {/* Feature 2 */}
+        <motion.div 
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          className="bg-white p-8 rounded-lg shadow-md hover:shadow-lg transition"
+        >
+          <FiZap className="text-blue-600 text-5xl mb-4 mx-auto" />
+          <h3 className="text-2xl font-bold mb-4">Fast & Powerful</h3>
+          <p className="text-gray-600">
+            Experience fast and efficient image generation powered by advanced AI models.
+          </p>
+        </motion.div>
+
+        {/* Feature 3 */}
+        <motion.div 
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7 }}
+          className="bg-white p-8 rounded-lg shadow-md hover:shadow-lg transition"
+        >
+          <FiLayers className="text-blue-600 text-5xl mb-4 mx-auto" />
+          <h3 className="text-2xl font-bold mb-4">Multiple Models</h3>
+          <p className="text-gray-600">
+            Choose from a variety of AI models for different styles and artistic needs.
+          </p>
+        </motion.div>
+      </section>
+
+      {/* How It Works Section */}
+      <section className="py-12 w-full text-center mb-16">
+        <motion.h2 
+          className="text-4xl font-bold text-gray-800 mb-8"
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+        >
+          How It Works
+        </motion.h2>
+        <div className="w-full max-w-6xl mx-auto grid grid-cols-1 sm:grid-cols-3 gap-8">
+          <motion.div 
+            className="p-6 rounded-lg shadow-lg bg-gray-50"
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
           >
-            <Image
-              className="dark:invert"
-              src="https://nextjs.org/icons/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+            <h3 className="text-xl font-bold text-indigo-600 mb-4">Step 1</h3>
+            <p className="text-gray-600">Enter your creative prompt and let our AI do the rest.</p>
+          </motion.div>
+
+          <motion.div 
+            className="p-6 rounded-lg shadow-lg bg-gray-50"
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7 }}
           >
-            Read our docs
-          </a>
+            <h3 className="text-xl font-bold text-indigo-600 mb-4">Step 2</h3>
+            <p className="text-gray-600">Choose the desired AI model for the style you want.</p>
+          </motion.div>
+
+          <motion.div 
+            className="p-6 rounded-lg shadow-lg bg-gray-50"
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+          >
+            <h3 className="text-xl font-bold text-indigo-600 mb-4">Step 3</h3>
+            <p className="text-gray-600">Download and share your stunning AI-generated image.</p>
+          </motion.div>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
+      </section>
+
+      {/* Pricing Section */}
+      <section className="w-full max-w-6xl mx-auto text-center py-16  from-gray-100 to-gray-50 mb-16">
+        <motion.h2 
+          className="text-4xl font-bold text-gray-800 mb-8"
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
         >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
+          Pricing Plans
+        </motion.h2>
+        <motion.div 
+          className="grid grid-cols-1 sm:grid-cols-3 gap-8"
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
         >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
+          {/* Free Plan */}
+          <div className="bg-white p-8 rounded-lg shadow-lg">
+            <h3 className="text-2xl font-bold text-blue-600 mb-4">Free Plan</h3>
+            <p className="text-gray-600 mb-6">Perfect for personal use.</p>
+            <p className="text-3xl font-bold text-gray-900">$0</p>
+            <p className="text-gray-600 mt-2">10 images/month</p>
+            <Link href="/signup" className="block mt-6 px-6 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition">
+              Get Started
+            </Link>
+          </div>
+
+          {/* Pro Plan */}
+          <div className="bg-white p-8 rounded-lg shadow-lg">
+            <h3 className="text-2xl font-bold text-blue-600 mb-4">Pro Plan</h3>
+            <p className="text-gray-600 mb-6">Ideal for professionals.</p>
+            <p className="text-3xl font-bold text-gray-900">$15/month</p>
+            <p className="text-gray-600 mt-2">100 images/month</p>
+            <Link href="/signup" className="block mt-6 px-6 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition">
+              Get Started
+            </Link>
+          </div>
+
+          {/* Enterprise Plan */}
+          <div className="bg-white p-8 rounded-lg shadow-lg">
+            <h3 className="text-2xl font-bold text-blue-600 mb-4">Enterprise Plan</h3>
+            <p className="text-gray-600 mb-6">Best for large teams.</p>
+            <p className="text-3xl font-bold text-gray-900">$50/month</p>
+            <p className="text-gray-600 mt-2">Unlimited images</p>
+            <Link href="/signup" className="block mt-6 px-6 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition">
+              Get Started
+            </Link>
+          </div>
+        </motion.div>
+      </section>
+
+      {/* FAQ Section */}
+      <section className="w-full max-w-6xl mx-auto text-left py-12">
+        <motion.h2 
+          className="text-4xl font-bold text-gray-800 mb-8 text-center"
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7 }}
         >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+          Frequently Asked Questions
+        </motion.h2>
+        <motion.div 
+          className="space-y-6"
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+        >
+          <div>
+            <h3 className="text-xl font-semibold text-indigo-600 mb-2">What is AI Pro Image Generator?</h3>
+            <p className="text-gray-700">AI Pro Image Generator is an advanced tool that allows you to generate stunning images using AI by simply entering a prompt.</p>
+          </div>
+          <div>
+            <h3 className="text-xl font-semibold text-indigo-600 mb-2">How many images can I generate for free?</h3>
+            <p className="text-gray-700">With the free plan, you can generate up to 10 images per month.</p>
+          </div>
+          <div>
+            <h3 className="text-xl font-semibold text-indigo-600 mb-2">Can I upgrade or cancel my plan anytime?</h3>
+            <p className="text-gray-700">Yes, you can upgrade or cancel your plan at any time through your account dashboard.</p>
+          </div>
+        </motion.div>
+      </section>
     </div>
   );
 }

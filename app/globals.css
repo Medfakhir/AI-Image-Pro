@@ -19,11 +19,73 @@ button {
   animation: spin 1.5s linear infinite;
 }
 
-@keyframes spin {
+/* Import a modern font for a tech-savvy look */
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@700&display=swap');
+
+@keyframes particleMotion {
   0% {
-    transform: rotate(0deg);
+    transform: translate(0, 0) scale(0.7);
+    opacity: 1;
+  }
+  50% {
+    transform: translate(20px, -20px) scale(1.2);
+    opacity: 0.5;
   }
   100% {
-    transform: rotate(360deg);
+    transform: translate(-20px, 20px) scale(0.7);
+    opacity: 0;
   }
+}
+
+.ai-logo {
+  font-family: 'Roboto Mono', monospace;
+  font-size: 3rem;
+  font-weight: bold;
+  color: transparent;
+  background: linear-gradient(to right, #00c6ff, #0072ff);
+  background-clip: text;
+  -webkit-background-clip: text;
+  position: relative;
+  display: inline-block;
+  overflow: hidden;
+}
+
+.particle {
+  position: absolute;
+  width: 5px;
+  height: 5px;
+  background-color: #00c6ff;
+  border-radius: 50%;
+  animation: particleMotion 3s infinite ease-in-out;
+  opacity: 0;
+}
+
+.particle:nth-child(1) {
+  top: 10%;
+  left: 20%;
+  animation-delay: 0.2s;
+}
+
+.particle:nth-child(2) {
+  top: 50%;
+  left: 80%;
+  animation-delay: 0.5s;
+}
+
+.particle:nth-child(3) {
+  top: 80%;
+  left: 40%;
+  animation-delay: 0.8s;
+}
+
+.particle:nth-child(4) {
+  top: 30%;
+  left: 60%;
+  animation-delay: 1.1s;
+}
+
+.particle:nth-child(5) {
+  top: 70%;
+  left: 20%;
+  animation-delay: 1.4s;
 }

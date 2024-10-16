@@ -89,30 +89,27 @@ export default function ImageGenerator() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (!prompt) return;
-  
+
     setLoadingImage(true);
     setError('');
     setImageURLs([]);
-  
+
     try {
-      // CORS Proxy URL
-      const corsProxy = "https://cors-anywhere.herokuapp.com/";
-  
-      // Define the API URL depending on the version
       let apiUrl;
       if (version === 'V1') {
         apiUrl = (seed) =>
-          `${corsProxy}https://image.pollinations.ai/prompt/${encodeURIComponent(`${prompt} ${seed}`)}?width=${width}&height=${height}&model=${model}&seed=${seed}&nologo=true`;
+          `https://image.pollinations.ai/prompt/${encodeURIComponent(`${prompt} ${seed}`)}?width=${width}&height=${height}&model=${model}&seed=${seed}&nologo=true`;
       } else {
         apiUrl = (uniquePrompt) =>
-          `${corsProxy}https://api.airforce/imagine2?model=${model}&prompt=${encodeURIComponent(uniquePrompt)}&size=${aspectRatio}&nologo=true&timestamp=${Date.now()}`;
+          `https://api.airforce/imagine2?model=${model}&prompt=${encodeURIComponent(uniquePrompt)}&size=${aspectRatio}&nologo=true&timestamp=${Date.now()}`;
       }
-  
+
       const responses = version === 'V1'
         ? await Promise.all(
             Array.from({ length: numImages }).map(() => {
               const uniqueSeed = generateRandomSeed();
               const url = apiUrl(uniqueSeed);
+              
               return fetch(url);
             })
           )
@@ -123,20 +120,20 @@ export default function ImageGenerator() {
               return fetch(url);
             })
           );
-  
+
       const imageBlobs = await Promise.all(responses.map((response) => response.blob()));
       const imageObjectsURLs = imageBlobs.map((blob) => URL.createObjectURL(blob));
-  
+
       imageObjectsURLs.forEach((url, index) => {
         console.log(`Image ${index + 1} URL (${version}): ${url}`);
       });
-  
+
       setImageURLs(imageObjectsURLs);
     } catch (error) {
       console.error('Failed to generate images:', error);
       setError('Failed to generate images. Please try again.');
     }
-  
+
     setLoadingImage(false);
   };
 

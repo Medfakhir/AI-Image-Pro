@@ -179,7 +179,7 @@ export default function ImageGenerator() {
                 className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-4 focus:ring-purple-300"
               >
                 <option value="V1">Version 1</option>
-                <option value="V2">Version 2</option>
+                <option value="V2" disabled>Version 2 (Coming Soon)</option>
               </select>
             </div>
 

@@ -2,6 +2,8 @@
 
 import { FiArrowRight, FiImage, FiSettings, FiStar, FiBriefcase } from 'react-icons/fi';
 import { useRouter } from 'next/navigation';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import 'swiper/css'; // Import Swiper styles
 
 export default function Home() {
   const router = useRouter();
@@ -16,7 +18,7 @@ export default function Home() {
         <button onClick={() => router.push('/image-generator')} className="relative z-10 bg-gradient-to-r from-green-400 to-blue-500 text-white px-8 py-4 rounded-lg text-lg font-bold shadow-lg hover:shadow-xl hover:scale-105 transition-transform mb-4">
           Get Started for Free
         </button>
-        <button onClick={() => router.push('/about')} className="relative z-10 text-white border border-white px-8 py-4 rounded-lg text-lg font-bold hover:bg-white hover:text-purple-700 hover:scale-105 transition-transform">
+        <button onClick={() => router.push('/about')} className="ml-4 relative z-10 text-white border border-white px-8 py-4 rounded-lg text-lg font-bold hover:bg-white hover:text-purple-700 hover:scale-105 transition-transform">
           Learn More
         </button>
       </section>
@@ -54,12 +56,27 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Testimonials */}
+      {/* Testimonials with Swiper Slider */}
       <section className="py-24 bg-white text-center">
         <h2 className="text-4xl font-bold mb-12">What Our Users Say</h2>
-        <div className="flex flex-col md:flex-row justify-around items-center max-w-6xl mx-auto">
-          <TestimonialCard name="User 1" feedback="MorpheAI made it so easy to generate stunning images. I’m amazed at the quality!" />
-          <TestimonialCard name="User 2" feedback="The variety of styles is incredible. I’ve created everything from pixel art to realistic portraits." />
+        <div className="max-w-6xl mx-auto">
+          <Swiper
+            spaceBetween={30}
+            slidesPerView={1}
+            loop={true}
+            autoplay={{ delay: 3000 }}
+            className="flex"
+          >
+            <SwiperSlide>
+              <TestimonialCard name="Sarah Martinez" feedback="MorpheAI made it so easy to generate stunning images. I’m amazed at the quality!" jobTitle="Digital Artist" />
+            </SwiperSlide>
+            <SwiperSlide>
+              <TestimonialCard name="David Wilson" feedback="The variety of styles is incredible. I’ve created everything from pixel art to realistic portraits." jobTitle="Graphic Designer" />
+            </SwiperSlide>
+            <SwiperSlide>
+              <TestimonialCard name="Emily Chang" feedback="MorpheAI helped elevate my marketing campaigns with incredible visuals." jobTitle="Marketing Manager" />
+            </SwiperSlide>
+          </Swiper>
         </div>
       </section>
 
@@ -98,9 +115,10 @@ const UseCaseCard = ({ icon, title, description }) => (
   </div>
 );
 
-const TestimonialCard = ({ name, feedback }) => (
+const TestimonialCard = ({ name, feedback, jobTitle }) => (
   <div className="bg-gray-100 p-6 rounded-lg shadow-md hover:shadow-lg transition-transform hover:scale-105">
     <p className="italic">"{feedback}"</p>
-    <p className="mt-4 font-bold">- {name}</p>
+    <p className="mt-4 font-bold">{name}</p>
+    <p className="text-gray-600">{jobTitle}</p>
   </div>
 );
